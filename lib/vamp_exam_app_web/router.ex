@@ -11,6 +11,8 @@ defmodule VampExamAppWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json-api"]
+    plug JaSerializer.ContentTypeNegotiation
+    plug JaSerializer.Deserializer
   end
 
   scope "/", VampExamAppWeb do
