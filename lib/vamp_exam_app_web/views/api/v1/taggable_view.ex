@@ -1,23 +1,11 @@
 defmodule VampExamAppWeb.Api.V1.TaggableView do
   use VampExamAppWeb, :view
-  alias VampExamAppWeb.Api.V1.TaggableView
+  use JaSerializer.PhoenixView
+  alias VampExamAppWeb.Api.V1
 
-  def render("taggable.json", %{taggable: taggable}) do
-   %{
-     type: "taggable",
-     id: taggable.id,
-     relationships: %{
-       tag: render_one(taggable.tag, TaggableView, "tag.json", as: :tag)
-     }
-   }
-  end
-
-  def render("tag.json", %{tag: tag}) do
-    %{
-      data: %{
-        id: tag.id,
-        type: tag.type
-      }
-    }
-  end
+  attributes [:id]
+  has_many :tag,
+    serializer: V1.TagView,
+    include: true,
+    identifiers: :when_included
 end
