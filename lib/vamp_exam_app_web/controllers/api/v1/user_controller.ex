@@ -1,8 +1,6 @@
 defmodule VampExamAppWeb.Api.V1.UserController do
   use VampExamAppWeb, :controller
-
   alias VampExamApp.Accounts
-  alias VampExamApp.Taggers
 
   action_fallback VampExamAppWeb.FallbackController
 

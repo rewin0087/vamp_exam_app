@@ -4,7 +4,7 @@ defmodule VampExamAppWeb.Api.V1.TaggableView do
   alias VampExamAppWeb.Api.V1
 
   attributes [:id]
-  has_many :tag,
+  has_one :tag,
     serializer: V1.TagView,
     include: true,
     identifiers: :when_included
