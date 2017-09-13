@@ -4,6 +4,7 @@ To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
   * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
+  * Import sql dump to postgresql psql -U postgres vamp_exam_app_dev < ./vamp_exam_app_dev.sql
   * Install Node.js dependencies with `cd assets && npm install`
   * Start Phoenix endpoint with `mix phx.server`
 
