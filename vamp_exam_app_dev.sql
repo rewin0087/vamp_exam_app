@@ -34,21 +34,6 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: access_tokens; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE access_tokens (
-    id uuid NOT NULL,
-    token text,
-    user_id uuid,
-    inserted_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
-ALTER TABLE access_tokens OWNER TO postgres;
-
---
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -107,23 +92,13 @@ CREATE TABLE users (
 ALTER TABLE users OWNER TO postgres;
 
 --
--- Data for Name: access_tokens; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY access_tokens (id, token, user_id, inserted_at, updated_at) FROM stdin;
-1931fadf-a5e6-4d79-8a66-5521bde3811a	4PYA3tSYl9M78rfzEllU%2FnZKKvFMX%2BVc0IZPUZqOTHEhex1P0hW%2BEHSoz7inq07j1HEjVA9zK4UEfMz8JAx0RthBTaWiyrqIEbGe5XcfIp35JICXayxTuK0Xn%2FPJ5J%2B6in2bKIiPIIrhfeU%2BM%2F7r4PT%2FKj364btiJbVzhcacBl5H6xE%2BUxvqlf%2BfVD3zlyFFfPIXdbKAD6JqNxokzIlhXILEfM7aFpAO8k1um6MfucwOSGc7BXi6oLJvZV8%2FL8lw1cAHhV94VYYpKM7zTqJJOA%3D%3D	042807cc-26e1-4122-9235-23412eacaa79	2016-05-23 02:36:30.827959	2016-05-23 02:36:30.827959
-\.
-
-
---
 -- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY schema_migrations (version, inserted_at) FROM stdin;
-20170912075342	2017-09-12 14:46:56.280511
-20170912105707	2017-09-12 14:46:56.30817
-20170912110136	2017-09-12 14:46:56.330342
-20170912134242	2017-09-12 14:46:56.351506
+20170912075342	2017-09-13 09:26:20.769279
+20170912105707	2017-09-13 09:26:20.791397
+20170912110136	2017-09-13 09:26:20.812533
 \.
 
 
@@ -251,14 +226,6 @@ a87a8506-ef6c-4cdb-861e-9eca7d79dbcd	Nicholas Shackel	Hong Kong	2016-05-23 02:58
 
 
 --
--- Name: access_tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY access_tokens
-    ADD CONSTRAINT access_tokens_pkey PRIMARY KEY (id);
-
-
---
 -- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -291,13 +258,6 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: access_tokens_user_id_index; Type: INDEX; Schema: public; Owner: postgres
---
-
-CREATE INDEX access_tokens_user_id_index ON access_tokens USING btree (user_id);
-
-
---
 -- Name: taggables_tag_id_index; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -309,14 +269,6 @@ CREATE INDEX taggables_tag_id_index ON taggables USING btree (tag_id);
 --
 
 CREATE INDEX taggables_user_id_index ON taggables USING btree (user_id);
-
-
---
--- Name: access_tokens_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY access_tokens
-    ADD CONSTRAINT access_tokens_user_id_fkey FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE;
 
 
 --
